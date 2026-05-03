@@ -566,7 +566,12 @@ rgtest!(r807, |dir: Dir, mut cmd: TestCommand| {
     dir.create(".a/b/file", "test");
     dir.create(".a/c/file", "test");
 
-    eqnice!(".a/c/file:test\n", cmd.arg("--hidden").arg("test").stdout());
+    // --no-ignore-global prevents the user's global gitignore (e.g.,
+    // *.a in ~/.gitignore_global) from interfering with this test.
+    eqnice!(
+        ".a/c/file:test\n",
+        cmd.arg("--hidden").arg("--no-ignore-global").arg("test").stdout()
+    );
 });
 
 // See: https://github.com/BurntSushi/ripgrep/pull/2711
