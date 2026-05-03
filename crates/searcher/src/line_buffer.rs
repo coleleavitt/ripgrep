@@ -506,8 +506,8 @@ impl LineBuffer {
         let additional = match self.config.buffer_alloc {
             BufferAllocation::Eager => len * 2,
             BufferAllocation::Error(limit) => {
-                let used = self.buf.len() - self.config.capacity;
-                let n = std::cmp::min(len * 2, limit - used);
+                let used = self.buf.len().saturating_sub(self.config.capacity);
+                let n = std::cmp::min(len * 2, limit.saturating_sub(used));
                 if n == 0 {
                     return Err(alloc_error(self.config.capacity + limit));
                 }

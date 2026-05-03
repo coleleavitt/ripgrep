@@ -208,7 +208,7 @@ impl<'s, M: Matcher, S: Sink> Core<'s, M, S> {
         self.absolute_byte_offset += consumed as u64;
         self.last_line_counted = 0;
         self.last_line_visited = 0;
-        self.set_pos(buf.len() - consumed);
+        self.set_pos(buf.len().saturating_sub(consumed));
         consumed
     }
 
