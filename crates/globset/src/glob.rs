@@ -766,9 +766,19 @@ impl Tokens {
 /// Convert a Unicode scalar value to an escaped string suitable for use as
 /// a literal in a non-Unicode regex.
 fn char_to_escaped_literal(c: char) -> String {
-    let mut buf = [0; 4];
-    let bytes = c.encode_utf8(&mut buf).as_bytes();
-    bytes_to_escaped_literal(bytes)
+    if c.is_ascii() {
+        let mut buf = [0; 4];
+        let bytes = c.encode_utf8(&mut buf).as_bytes();
+        bytes_to_escaped_literal(bytes)
+    } else {
+        // For non-ASCII characters, emit the Unicode escape form
+        // instead of escaping individual UTF-8 bytes. This is
+        // critical for correctness inside character classes, where
+        // byte-level escapes like \xc3\xa4 would create invalid
+        // ranges (e.g., [\xc3\xa4-\xc3\xb6] creates a range from
+        // \xa4 to \xc3, not from ä to ö).
+        format!("\\u{{{:04x}}}", u32::from(c))
+    }
 }
 
 /// Converts an arbitrary sequence of bytes to a UTF-8 string. All non-ASCII
