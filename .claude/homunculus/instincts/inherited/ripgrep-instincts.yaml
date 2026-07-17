@@ -1,0 +1,535 @@
+# Instincts generated from https://github.com/coleleavitt/ripgrep
+# Generated: 2026-07-17T18:38:15.938Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: ripgrep-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/coleleavitt/ripgrep
+---
+
+# Ripgrep Commit Length
+
+## Action
+
+Keep commit messages concise (~34 characters)
+
+## Evidence
+
+- Average commit message length: 34 chars
+- Based on 62 commits
+
+---
+id: ripgrep-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/coleleavitt/ripgrep
+---
+
+# Ripgrep Naming Files
+
+## Action
+
+Use camelCase naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: camelCase
+
+---
+id: ripgrep-import-relative
+trigger: "when importing modules"
+confidence: 0.75
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/coleleavitt/ripgrep
+---
+
+# Ripgrep Import Relative
+
+## Action
+
+Use relative imports for project files
+
+## Evidence
+
+- Import analysis shows relative import pattern
+- Example: import { x } from '../lib/x'
+
+---
+id: ripgrep-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/coleleavitt/ripgrep
+---
+
+# Ripgrep Export Style
+
+## Action
+
+Prefer named exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: named
+
+---
+id: ripgrep-test-separate
+trigger: "when writing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/coleleavitt/ripgrep
+---
+
+# Ripgrep Test Separate
+
+## Action
+
+Place tests in the tests/ or __tests__/ directory, mirroring src structure
+
+## Evidence
+
+- Separate test directory pattern detected
+- Tests live in dedicated test folders
+
+---
+id: ripgrep-test-naming
+trigger: "when creating a test file"
+confidence: 0.85
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/coleleavitt/ripgrep
+---
+
+# Ripgrep Test Naming
+
+## Action
+
+Name test files using the pattern: *.test.ts
+
+## Evidence
+
+- File pattern: *.test.ts
+- Consistent across test files
+
+---
+id: ripgrep-workflow-feature-development
+trigger: "when implementing a new feature"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/coleleavitt/ripgrep
+---
+
+# Ripgrep Workflow Feature Development
+
+## Action
+
+Follow the feature-development workflow:
+1. Add feature implementation
+2. Add tests for feature
+3. Update documentation
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~8x per month
+- Files: **/*.test.*
+
+---
+id: ripgrep-workflow-crate-release-version-bump
+trigger: "when doing crate release version bump"
+confidence: 0.7
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/coleleavitt/ripgrep
+---
+
+# Ripgrep Workflow Crate Release Version Bump
+
+## Action
+
+Follow the crate-release-version-bump workflow:
+1. Update the version number in the crate's Cargo.toml.
+2. Update Cargo.lock to reflect the new version.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~4x per month
+- Files: Cargo.lock, crates/*/Cargo.toml
+
+---
+id: ripgrep-workflow-add-new-file-type-to-ignore-crate
+trigger: "when doing add new file type to ignore crate"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/coleleavitt/ripgrep
+---
+
+# Ripgrep Workflow Add New File Type To Ignore Crate
+
+## Action
+
+Follow the add-new-file-type-to-ignore-crate workflow:
+1. Edit crates/ignore/src/default_types.rs to add the new file type.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: crates/ignore/src/default_types.rs
+
+---
+id: ripgrep-workflow-documentation-update-or-policy-change
+trigger: "when doing documentation update or policy change"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/coleleavitt/ripgrep
+---
+
+# Ripgrep Workflow Documentation Update Or Policy Change
+
+## Action
+
+Follow the documentation-update-or-policy-change workflow:
+1. Edit one or more markdown files such as CONTRIBUTING.md, GUIDE.md, or AI_POLICY.md.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: CONTRIBUTING.md, GUIDE.md, AI_POLICY.md
+
+---
+id: ripgrep-workflow-ci-workflow-update
+trigger: "when doing ci workflow update"
+confidence: 0.55
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/coleleavitt/ripgrep
+---
+
+# Ripgrep Workflow Ci Workflow Update
+
+## Action
+
+Follow the ci-workflow-update workflow:
+1. Edit .github/workflows/ci.yml and/or .github/workflows/release.yml.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~1x per month
+- Files: .github/workflows/ci.yml, .github/workflows/release.yml
+
+---
+id: ripgrep-workflow-changelog-update
+trigger: "when doing changelog update"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/coleleavitt/ripgrep
+---
+
+# Ripgrep Workflow Changelog Update
+
+## Action
+
+Follow the changelog-update workflow:
+1. Edit CHANGELOG.md to add or update entries.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: CHANGELOG.md
+
+---
+id: ripgrep-camelcase-files
+trigger: "When naming a new file."
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: coleleavitt/ripgrep
+---
+
+# Ripgrep Camelcase Files
+
+## Action
+
+Use camelCase for file names.
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.files: camelCase
+
+---
+id: ripgrep-camelcase-functions
+trigger: "When naming a new function."
+confidence: 0.85
+domain: code-style
+source: repo-analysis
+source_repo: coleleavitt/ripgrep
+---
+
+# Ripgrep Camelcase Functions
+
+## Action
+
+Use camelCase for function names.
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.functions: camelCase
+
+---
+id: ripgrep-pascalcase-classes
+trigger: "When naming a new class or struct."
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: coleleavitt/ripgrep
+---
+
+# Ripgrep Pascalcase Classes
+
+## Action
+
+Use PascalCase for class/struct names.
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.classes: PascalCase
+
+---
+id: ripgrep-screaming-snake-constants
+trigger: "When naming a constant."
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: coleleavitt/ripgrep
+---
+
+# Ripgrep Screaming Snake Constants
+
+## Action
+
+Use SCREAMING_SNAKE_CASE for constant names.
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.constants: SCREAMING_SNAKE_CASE
+
+---
+id: ripgrep-relative-imports
+trigger: "When importing modules."
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: coleleavitt/ripgrep
+---
+
+# Ripgrep Relative Imports
+
+## Action
+
+Use relative imports.
+
+## Evidence
+
+- Pattern in codeStyle.importStyle: relative
+
+---
+id: ripgrep-named-exports
+trigger: "When exporting items from a module."
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: coleleavitt/ripgrep
+---
+
+# Ripgrep Named Exports
+
+## Action
+
+Use named exports.
+
+## Evidence
+
+- Pattern in codeStyle.exportStyle: named
+
+---
+id: ripgrep-unit-test-pattern
+trigger: "When writing tests."
+confidence: 0.7
+domain: testing
+source: repo-analysis
+source_repo: coleleavitt/ripgrep
+---
+
+# Ripgrep Unit Test Pattern
+
+## Action
+
+Write unit tests in files matching *.test.ts.
+
+## Evidence
+
+- Pattern in testing.filePattern: *.test.ts
+- testing.testTypes: unit
+
+---
+id: ripgrep-commit-prefixes
+trigger: "When writing a commit message."
+confidence: 0.85
+domain: git
+source: repo-analysis
+source_repo: coleleavitt/ripgrep
+---
+
+# Ripgrep Commit Prefixes
+
+## Action
+
+Prefix the commit with a relevant keyword (e.g., ignore, doc, deps, changelog, globset, _rg, docs).
+
+## Evidence
+
+- Pattern in commits.prefixes
+- Seen in commit examples: 'ignore: use named fields in Ignore', 'docs: add AI policy for contributors'
+
+---
+id: ripgrep-short-commit-messages
+trigger: "When composing a commit message."
+confidence: 0.7
+domain: git
+source: repo-analysis
+source_repo: coleleavitt/ripgrep
+---
+
+# Ripgrep Short Commit Messages
+
+## Action
+
+Keep the commit message concise, around 34 characters on average.
+
+## Evidence
+
+- Pattern in commits.averageLength: 34
+- Seen in commit examples
+
+---
+id: ripgrep-crate-release-version-bump
+trigger: "When releasing a new version of a crate."
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: coleleavitt/ripgrep
+---
+
+# Ripgrep Crate Release Version Bump
+
+## Action
+
+Update the version in crates/*/Cargo.toml and update Cargo.lock.
+
+## Evidence
+
+- Workflow: crate-release-version-bump
+- Files: crates/*/Cargo.toml, Cargo.lock
+
+---
+id: ripgrep-add-new-file-type-ignore
+trigger: "When supporting a new file type for ignore/filtering."
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: coleleavitt/ripgrep
+---
+
+# Ripgrep Add New File Type Ignore
+
+## Action
+
+Edit crates/ignore/src/default_types.rs to add the new file type.
+
+## Evidence
+
+- Workflow: add-new-file-type-to-ignore-crate
+- File: crates/ignore/src/default_types.rs
+
+---
+id: ripgrep-documentation-update
+trigger: "When updating documentation or project policies."
+confidence: 0.85
+domain: workflow
+source: repo-analysis
+source_repo: coleleavitt/ripgrep
+---
+
+# Ripgrep Documentation Update
+
+## Action
+
+Edit one or more markdown files such as CONTRIBUTING.md, GUIDE.md, or AI_POLICY.md.
+
+## Evidence
+
+- Workflow: documentation-update-or-policy-change
+- Files: CONTRIBUTING.md, GUIDE.md, AI_POLICY.md
+
+---
+id: ripgrep-ci-workflow-update
+trigger: "When adding new CI targets or updating workflow logic."
+confidence: 0.8
+domain: workflow
+source: repo-analysis
+source_repo: coleleavitt/ripgrep
+---
+
+# Ripgrep Ci Workflow Update
+
+## Action
+
+Edit .github/workflows/ci.yml and/or .github/workflows/release.yml.
+
+## Evidence
+
+- Workflow: ci-workflow-update
+- Files: .github/workflows/ci.yml, .github/workflows/release.yml
+
+---
+id: ripgrep-changelog-update
+trigger: "When documenting changes or preparing for a release."
+confidence: 0.85
+domain: workflow
+source: repo-analysis
+source_repo: coleleavitt/ripgrep
+---
+
+# Ripgrep Changelog Update
+
+## Action
+
+Edit CHANGELOG.md to add or update entries.
+
+## Evidence
+
+- Workflow: changelog-update
+- File: CHANGELOG.md
+
